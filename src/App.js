@@ -8,7 +8,7 @@ class App extends React.Component {
   state = {
     results: [],
     query: "",
-    // nominations: [],
+    nominations: [],
   };
 
   handleOnChange = (e) => {
@@ -33,6 +33,34 @@ class App extends React.Component {
       });
   };
 
+  nominate = (nomination) => {
+    // e.preventDefault();
+    const { nominations } = this.state;
+
+    // if (
+    //   !nominations.some(
+    //     (alreadyNominated) => alreadyNominated.id == nomination.id
+    //   )
+    // ) {
+    this.setState({
+      nominations: [...this.state.nominations, nomination],
+    });
+    console.log(nomination);
+    console.log(nominations);
+    // }
+  };
+
+  // nominate = (e) => {
+  //   e.preventDefault();
+  //   const nominations = this.state;
+  //   const addNominee = this.state.results;
+  //   console.log(nominations);
+
+  //   this.setState({
+  //     nominations: [...this.state.nominations, addNominee],
+  //   });
+  // };
+
   render() {
     return (
       <div className="App">
@@ -49,7 +77,10 @@ class App extends React.Component {
           />
         </form>
         <div>
-          {/* if (this.state.results) {<p>Results for {this.state.query}</p>} */}
+          {this.state.results.length > 0 && (
+            <p>Results for {this.state.query}</p>
+          )}
+
           {this.state.results &&
             this.state.results.map((movie) => {
               return (
@@ -58,8 +89,15 @@ class App extends React.Component {
                   title={movie.Title}
                   year={movie.Year}
                   searchResults={this.state.query}
+                  onClick={this.nominate}
                 />
               );
+            })}
+        </div>
+        <div>
+          {this.state.nominations.length > 0 &&
+            this.state.nominations.map((addNominee) => {
+              return <p>{addNominee.title}</p>;
             })}
         </div>
       </div>

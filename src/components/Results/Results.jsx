@@ -2,14 +2,17 @@ import React from "react";
 import "./results.scss";
 
 function Results(props) {
+  console.log(props);
   return (
     <>
-      {/* <div>
-        <p>Results for {props.searchResults}</p>
-      </div> */}
       <div>
-        <p>{props.title}</p>
-        <p>{props.year}</p>
+        <ul>
+          <li className="movie-list" key={props.imdbID}>
+            {props.title}
+            {props.year}
+            <button onClick={() => props.onClick(props)}>Nominate</button>
+          </li>
+        </ul>
       </div>
     </>
   );
