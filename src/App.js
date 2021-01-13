@@ -1,7 +1,7 @@
-// import logo from "./logo.svg";
 import React from "react";
-import Results from "./components/Results/Results";
-import "./App.css";
+import SearchResults from "./components/SearchResults/SearchResults";
+import Nominations from "./components/Nominations/Nominations";
+import "./App.scss";
 import axios from "axios";
 
 class App extends React.Component {
@@ -9,6 +9,7 @@ class App extends React.Component {
     results: [],
     query: "",
     nominations: [],
+    newItem: "",
   };
 
   handleOnChange = (e) => {
@@ -50,6 +51,30 @@ class App extends React.Component {
     // }
   };
 
+  // nominate = () => {
+  //   const newItem = {
+  //     id: 1 + Math.random(),
+  //     value: this.state.newItem,
+  //   };
+  //   const nominations = [...this.state.nominations];
+  //   nominations.push(newItem);
+
+  //   this.setState({
+  //     nominations,
+  //     newItem: "",
+  //   });
+  //   console.log(nominations);
+  // };
+
+  removeNomination = (id) => {
+    console.log(id);
+    // const nominations = [...this.state.nominations];
+
+    // const updatedNominations = nominations.filter((movie) => movie.id !== id);
+
+    // this.setState({ nominations: updatedNominations });
+  };
+
   // nominate = (e) => {
   //   e.preventDefault();
   //   const nominations = this.state;
@@ -63,12 +88,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>The Shoppies</h1>
-        <form onSubmit={(e) => this.handleSearch(e)}>
-          <label>Movie Title</label>
+      <div className="search">
+        {/* <div className="search__form-wrap"> */}
+        <h1 className="search__title">The Shoppies</h1>
+        <form className="search__form" onSubmit={(e) => this.handleSearch(e)}>
+          <label className="search__label">Movie Title</label>
           <input
-            className="search"
+            className="search__input"
             name="text"
             type="text"
             onChange={(e) => this.handleOnChange(e)}
@@ -76,6 +102,7 @@ class App extends React.Component {
             placeholder="Search"
           />
         </form>
+        {/* </div> */}
         <div>
           {this.state.results.length > 0 && (
             <p>Results for {this.state.query}</p>
@@ -84,7 +111,7 @@ class App extends React.Component {
           {this.state.results &&
             this.state.results.map((movie) => {
               return (
-                <Results
+                <SearchResults
                   key={movie.imdbID}
                   title={movie.Title}
                   year={movie.Year}
@@ -97,7 +124,14 @@ class App extends React.Component {
         <div>
           {this.state.nominations.length > 0 &&
             this.state.nominations.map((addNominee) => {
-              return <p>{addNominee.title}</p>;
+              return (
+                <Nominations
+                  key={addNominee.imdbID}
+                  title={addNominee.title}
+                  year={addNominee.year}
+                  onClick={this.removeNomination}
+                />
+              );
             })}
         </div>
       </div>

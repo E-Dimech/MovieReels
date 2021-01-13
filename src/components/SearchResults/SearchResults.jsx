@@ -1,7 +1,7 @@
 import React from "react";
-import "./results.scss";
+import "./searchResults.scss";
 
-function Results(props) {
+function SearchResults(props) {
   console.log(props);
   return (
     <>
@@ -18,4 +18,4 @@ function Results(props) {
   );
 }
 
-export default Results;
+export default SearchResults;
