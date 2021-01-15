@@ -3,6 +3,9 @@ import SearchResults from "./components/SearchResults/SearchResults";
 import Nominations from "./components/Nominations/Nominations";
 import "./App.scss";
 import axios from "axios";
+// import uuid from "uuid/v4";
+// import uuid from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 class App extends React.Component {
   state = {
@@ -36,45 +39,45 @@ class App extends React.Component {
       });
   };
 
-  nominate = (nomination) => {
-    // e.preventDefault();
-    const { nominations } = this.state;
+  // nominate = (nomination) => {
+  //   // e.preventDefault();
+  //   const { nominations } = this.state;
 
-    // if (
-    //   !nominations.some(
-    //     (alreadyNominated) => alreadyNominated.id == nomination.id
-    //   )
-    // ) {
+  //   // if (
+  //   //   !nominations.some(
+  //   //     (alreadyNominated) => alreadyNominated.id == nomination.id
+  //   //   )
+  //   // ) {
+  //   this.setState({
+  //     nominations: [...this.state.nominations, nomination],
+  //   });
+  //   console.log(nomination);
+  //   console.log(nominations);
+  //   // }
+  // };
+
+  nominate = (nomination) => {
+    const newItem = {
+      id: 1 + Math.random(),
+      value: this.state.newItem,
+    };
+    const nominations = [...this.state.nominations];
+    nominations.push(newItem);
+
     this.setState({
       nominations: [...this.state.nominations, nomination],
+      newItem: "",
     });
-    console.log(nomination);
     console.log(nominations);
-    // }
   };
-
-  // nominate = () => {
-  //   const newItem = {
-  //     id: 1 + Math.random(),
-  //     value: this.state.newItem,
-  //   };
-  //   const nominations = [...this.state.nominations];
-  //   nominations.push(newItem);
-
-  //   this.setState({
-  //     nominations,
-  //     newItem: "",
-  //   });
-  //   console.log(nominations);
-  // };
 
   removeNomination = (id) => {
     console.log(id);
-    // const nominations = [...this.state.nominations];
+    const nominations = [...this.state.nominations];
 
-    // const updatedNominations = nominations.filter((movie) => movie.id !== id);
+    const updatedNominations = nominations.filter((movie) => movie.id !== id);
 
-    // this.setState({ nominations: updatedNominations });
+    this.setState({ nominations: updatedNominations });
   };
 
   // nominate = (e) => {

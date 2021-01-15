@@ -9,7 +9,7 @@ function Nominations(props) {
           {props.title} {"  "} {props.year}
           <button
             className="nominations__remove-btn"
-            onClick={() => props.onClick(props)}
+            onClick={() => props.onClick(props.id)}
           >
             <i class="nominations__remove-icon fas fa-minus-circle"></i>
           </button>

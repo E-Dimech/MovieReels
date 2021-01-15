@@ -7,7 +7,7 @@ function SearchResults(props) {
     <>
       <div className="results">
         <ul>
-          <li className="results__movie-list" key={props.imdbID}>
+          <li className="results__movie-list" key={props.id}>
             <span className="results__movie-title">{props.title}</span>
             <span>{"   "}</span>
             <span className="results__movie-year"> {props.year} </span>
