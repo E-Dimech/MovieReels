@@ -5,12 +5,18 @@ function SearchResults(props) {
   console.log(props);
   return (
     <>
-      <div>
+      <div className="results">
         <ul>
-          <li className="movie-list" key={props.imdbID}>
-            {props.title}
-            {props.year}
-            <button onClick={() => props.onClick(props)}>Nominate</button>
+          <li className="results__movie-list" key={props.imdbID}>
+            <span className="results__movie-title">{props.title}</span>
+            <span>{"   "}</span>
+            <span className="results__movie-year"> {props.year} </span>
+            <button
+              className="results__nom-btn"
+              onClick={() => props.onClick(props)}
+            >
+              <i className="results__nom-icon fas fa-award"></i>
+            </button>
           </li>
         </ul>
       </div>

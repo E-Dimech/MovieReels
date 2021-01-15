@@ -16,12 +16,14 @@ class App extends React.Component {
     e.preventDefault();
     const query = e.target.value;
     this.setState({ query });
+    // document.getElementById("search").value = "";
     console.log(query);
   };
 
   handleSearch = (e) => {
     e.preventDefault();
-    const urlApi = `http://www.omdbapi.com/?s=${this.state.query}&apikey=926dcd91`;
+    const urlApi = `http://www.omdbapi.com/?s=${this.state.query}&apikey=926dcd91&type=movie`;
+    // document.getElementById("search").reset();
 
     axios
       .get(urlApi)
@@ -89,50 +91,65 @@ class App extends React.Component {
   render() {
     return (
       <div className="search">
-        {/* <div className="search__form-wrap"> */}
-        <h1 className="search__title">The Shoppies</h1>
-        <form className="search__form" onSubmit={(e) => this.handleSearch(e)}>
-          <label className="search__label">Movie Title</label>
-          <input
-            className="search__input"
-            name="text"
-            type="text"
-            onChange={(e) => this.handleOnChange(e)}
-            value={this.state.query}
-            placeholder="Search"
-          />
-        </form>
-        {/* </div> */}
-        <div>
+        <div className="search__form-wrap">
+          <h1 className="search__title">Shoppies</h1>
+          <form
+            className="search__form"
+            id="search"
+            onSubmit={(e) => this.handleSearch(e)}
+          >
+            {/* <label className="search__label">Movie Title</label> */}
+            <input
+              className="search__input"
+              name="text"
+              type="text"
+              // id="search"
+              onChange={(e) => this.handleOnChange(e)}
+              value={this.state.query}
+              placeholder="Movie Title"
+            />
+            <i class="search__input-icon fas fa-search"></i>
+          </form>
+        </div>
+        <div className="search__render-wrap">
           {this.state.results.length > 0 && (
-            <p>Results for {this.state.query}</p>
+            <div className="search__results">
+              <h2 className="search__results-title">
+                Results for {this.state.query}
+              </h2>
+
+              {this.state.results &&
+                this.state.results.map((movie) => {
+                  return (
+                    <SearchResults
+                      key={movie.imdbID}
+                      title={movie.Title}
+                      year={movie.Year}
+                      searchResults={this.state.query}
+                      onClick={this.nominate}
+                    />
+                  );
+                })}
+            </div>
           )}
 
-          {this.state.results &&
-            this.state.results.map((movie) => {
-              return (
-                <SearchResults
-                  key={movie.imdbID}
-                  title={movie.Title}
-                  year={movie.Year}
-                  searchResults={this.state.query}
-                  onClick={this.nominate}
-                />
-              );
-            })}
-        </div>
-        <div>
-          {this.state.nominations.length > 0 &&
-            this.state.nominations.map((addNominee) => {
-              return (
-                <Nominations
-                  key={addNominee.imdbID}
-                  title={addNominee.title}
-                  year={addNominee.year}
-                  onClick={this.removeNomination}
-                />
-              );
-            })}
+          {this.state.nominations.length > 0 && (
+            <div className="search__nominations">
+              <h2 className="search__nominations-title">Nominations</h2>
+
+              {this.state.results &&
+                this.state.nominations.map((addNominee) => {
+                  return (
+                    <Nominations
+                      key={addNominee.imdbID}
+                      title={addNominee.title}
+                      year={addNominee.year}
+                      onClick={this.removeNomination}
+                    />
+                  );
+                })}
+            </div>
+          )}
         </div>
       </div>
     );

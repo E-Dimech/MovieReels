@@ -3,12 +3,17 @@ import "./nominations.scss";
 
 function Nominations(props) {
   return (
-    <div>
+    <div className="nominations">
       <ul>
-        <li className="movie-list" key={props.imdbID}>
-          {props.title}
-          {props.year}
-          <button onClick={() => props.onClick(props)}>Remove</button>
+        <li className="nominations__movie-list" key={props.imdbID}>
+          {props.title} {"  "} {props.year}
+          <button
+            className="nominations__remove-btn"
+            onClick={() => props.onClick(props)}
+          >
+            <i class="nominations__remove-icon fas fa-minus-circle"></i>
+          </button>
+          {/* {props.title} {"  "} {props.year} */}
         </li>
       </ul>
     </div>

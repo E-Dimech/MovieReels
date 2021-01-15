@@ -1,3 +1,39 @@
-.movie-list {
-  list-style: none;
+@import "../../styles/global.scss";
+
+.results {
+  background-color: black;
+
+  &__movie-list {
+    list-style: none;
+    color: white;
+    font-size: 1.5rem;
+  }
+  &__movie-year {
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+
+  &__nom-btn {
+    margin-left: 5px;
+    background-color: transparent;
+    border: none;
+    &:hover {
+      cursor: grab;
+    }
+    &:focus {
+      outline: none;
+      cursor: grabbing;
+    }
+  }
+  &__nom-icon {
+    color: white;
+    background-color: transparent;
+    font-size: 1.5rem;
+  }
+}
+.fa-award {
+  color: yellow;
+  &:hover {
+    color: blue;
+  }
 }
