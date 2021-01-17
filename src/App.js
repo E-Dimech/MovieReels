@@ -22,7 +22,7 @@ class App extends React.Component {
 
   handleSearch = (e) => {
     e.preventDefault();
-    const urlApi = `http://www.omdbapi.com/?s=${this.state.query}&apikey=926dcd91&type=movie`;
+    const urlApi = `https://www.omdbapi.com/?s=${this.state.query}&apikey=926dcd91&type=movie`;
     // document.getElementById("search").reset();
 
     axios
