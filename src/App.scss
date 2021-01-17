@@ -1,7 +1,7 @@
 @import "./styles/global.scss";
 
 .search {
-  background-color: black;
+  background-color: #051418;
   width: 100%;
   height: 200px;
   display: flex;
@@ -9,8 +9,9 @@
   align-items: center;
 
   &__title {
-    color: blanchedalmond;
+    color: #ecedea;
     text-align: center;
+    font-family: "Eczar";
     font-size: 3rem;
     letter-spacing: 10px;
     width: 100%;
@@ -29,37 +30,29 @@
     padding: 20px 35px 20px 45px;
     border-radius: 40px;
     border: none;
-    // margin-left: 9px;
-    background-color: white;
-    // color: #ffffff;
+    background-color: #ecedea;
     font-size: 1rem;
-    font-family: fantasy;
-    // width: 75%;
+    font-weight: bold;
+    font-family: "WorkSans";
     width: 75%;
     height: 30px;
-    // max-height: 20px;
-    // position: relative;
     @include tablet {
       width: 100%;
       height: 45px;
-      //   font-;size: 1.5rem;
     }
 
     &:focus {
-      background-color: #ff66de;
-      //   font-family: fantasy;
+      background-color: #2ea1be;
       font-size: 1rem;
-      //   max-height: 20px;
-      //   height: 45px;
-      //   padding-left: 80px;
+      font-weight: bold;
       outline: none;
+      padding-left: 48px;
     }
     &::placeholder {
-      font-family: fantasy;
+      font-family: "WorkSans";
       font-size: 1rem;
-      //   padding-left: 20px;
-      //   max-height: 20px;
-      color: cyan;
+      color: black;
+      padding-left: 4px;
     }
   }
   &__input-icon {
@@ -73,41 +66,117 @@
       left: -105px;
     }
   }
+  &__banner-border {
+    margin-top: 20px;
+    width: 270px;
+    height: 50px;
+    border: 1px solid #333;
+    font-family: "Cinzel", serif;
+    font-size: 1rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    transition: 1s;
+  }
+  &__banner-text {
+    font-family: "Eczar";
+    color: #ecedea;
+  }
   &__render-wrap {
     width: 100%;
     @include tablet {
       display: flex;
+      justify-content: center;
     }
   }
   &__results {
-    border: 4px solid #be10b0;
+    border: 4px solid #2ea1be;
     border-radius: 25px;
     padding-bottom: 30px;
-    background-color: black;
+    background-color: #051418;
     width: 97%;
     padding-top: 20px;
-    margin-bottom: 50px;
     @include tablet {
-      width: 55%;
+      width: 45%;
       margin-right: 5%;
     }
   }
   &__results-title {
+    font-family: "WorkSans";
+    font-size: 1.5rem;
     text-align: center;
-    color: wheat;
+    color: #ecedea;
+    @include tablet {
+      font-size: 2rem;
+    }
   }
   &__nominations {
-    border: 4px solid #a00e93;
+    margin-top: 5%;
+    border: 4px solid #2ea1be;
     border-radius: 25px;
     padding-top: 20px;
     padding-bottom: 30px;
     width: 97%;
     @include tablet {
-      width: 35%;
+      width: 45%;
+      margin-top: 0;
     }
   }
   &__nominations-title {
-    color: white;
+    font-family: "WorkSans";
+    font-size: 1.5rem;
+    color: #ecedea;
     text-align: center;
+    @include tablet {
+      font-size: 2rem;
+    }
   }
+}
+
+// Banner animation
+
+.search__banner-border::before,
+.search__banner-border::after {
+  position: absolute;
+  background: #2ea1be;
+  z-index: -1;
+  transition: 1s;
+  content: "";
+}
+
+.search__banner-border::before {
+  height: 50px;
+  width: 270px;
+}
+
+.search__banner-border::after {
+  width: 270px;
+  height: 30px;
+}
+
+// .noselect {
+//   -webkit-touch-callout: none;
+//   -webkit-user-select: none;
+//   -khtml-user-select: none;
+//   -moz-user-select: none;
+//   -ms-user-select: none;
+//   user-select: none;
+// }
+
+.search__banner-border:hover::before {
+  width: 0px;
+  background: #4dbcc1;
+}
+
+.search__banner-border:hover::after {
+  height: 0px;
+  background: #4dbcc1;
+}
+
+.search__banner-border:hover {
+  background: #4dbcc1;
 }

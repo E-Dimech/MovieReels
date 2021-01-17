@@ -1,6 +1,7 @@
 import React from "react";
 import SearchResults from "./components/SearchResults/SearchResults";
 import Nominations from "./components/Nominations/Nominations";
+import SubNav from "./components/SubNav/SubNav";
 import "./App.scss";
 import axios from "axios";
 import Banner from "react-js-banner";
@@ -10,14 +11,13 @@ class App extends React.Component {
     results: [],
     query: "",
     nominations: [],
-    // newItem: "",
+    banner1Css: { color: "white", backgroundColor: "green" },
   };
 
   handleOnChange = (e) => {
     e.preventDefault();
     const query = e.target.value;
     this.setState({ query });
-    // console.log(query);
   };
 
   handleSearch = (e) => {
@@ -34,10 +34,6 @@ class App extends React.Component {
         console.log(err);
       });
   };
-  // componentDidUpdate() {
-  //   console.log(this.state.results);
-  //   console.log(this.state.nominations);
-  // }
 
   nominate = (nomination) => {
     // if (
@@ -61,7 +57,11 @@ class App extends React.Component {
     return (
       <div className="search">
         <div className="search__form-wrap">
-          <h1 className="search__title">Shopp!es</h1>
+          <h1 className="search__title">
+            The
+            <br />
+            Shopp!es
+          </h1>
           <form
             className="search__form"
             id="search"
@@ -77,11 +77,13 @@ class App extends React.Component {
             />
             <i class="search__input-icon fas fa-search"></i>
           </form>
+          {/* <div className="search__banner-border">
+            <h2 className="search__banner-text">You've nominated 5 films!</h2>
+          </div> */}
           {this.state.nominations.length > 4 && (
-            <Banner
-              title="Congrats on adding 5 nominations!"
-              showBanner={true}
-            />
+            <div className="search__banner-border">
+              <h2 className="search__banner-text">You've nominated 5 films!</h2>
+            </div>
           )}
         </div>
         <div className="search__render-wrap">
@@ -96,6 +98,7 @@ class App extends React.Component {
                   <SearchResults
                     key={movie.imdbID}
                     imdbID={movie.imdbID}
+                    poster={movie.Poster}
                     id={movie.imdbID}
                     title={movie.Title}
                     year={movie.Year}
@@ -117,6 +120,7 @@ class App extends React.Component {
                     key={addNominee.imdbID}
                     imdbID={addNominee.imdbID}
                     id={addNominee.imdbID}
+                    poster={addNominee.poster}
                     title={addNominee.title}
                     year={addNominee.year}
                     onClick={this.removeNomination}
@@ -127,6 +131,7 @@ class App extends React.Component {
             </div>
           )}
         </div>
+        <SubNav />
       </div>
     );
   }

@@ -4,9 +4,17 @@ import "./nominations.scss";
 function Nominations(props) {
   return (
     <div className="nominations" key={props.imdbID}>
-      <ul>
+      <ul className="nominations__ul">
         <li className="nominations__movie-list">
-          {props.title} {"  "} {props.year}
+          <img
+            className="nominations__movie-poster"
+            src={props.poster}
+            alt={props.title}
+          />
+
+          <span className="nominations__movie-title">{props.title}</span>
+          <span>{"   "}</span>
+          <span className="nominations__movie-year"> {props.year} </span>
           <button
             className="nominations__remove-btn"
             onClick={() => props.onClick(props.id)}

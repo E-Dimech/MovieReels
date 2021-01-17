@@ -1,15 +1,19 @@
 @import "../../styles/global.scss";
 
 .results {
-  background-color: black;
-
+  background-color: #051418;
+  &__ul {
+    margin-left: -20px;
+  }
   &__movie-list {
     list-style: none;
-    color: white;
+    color: #ecedea;
     font-size: 1.5rem;
+    font-family: "Eczar";
   }
   &__movie-year {
     font-style: italic;
+    font-family: "Eczar";
     font-size: 1.1rem;
   }
 
@@ -26,14 +30,14 @@
     }
   }
   &__nom-icon {
-    color: white;
+    color: #ecedea;
     background-color: transparent;
     font-size: 1.5rem;
   }
 }
 .fa-award {
-  color: yellow;
+  color: #1b4d97;
   &:hover {
-    color: blue;
+    color: #2ea1be;
   }
 }
