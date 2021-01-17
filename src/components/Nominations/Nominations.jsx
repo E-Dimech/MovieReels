@@ -3,9 +3,9 @@ import "./nominations.scss";
 
 function Nominations(props) {
   return (
-    <div className="nominations">
+    <div className="nominations" key={props.imdbID}>
       <ul>
-        <li className="nominations__movie-list" key={props.imdbID}>
+        <li className="nominations__movie-list">
           {props.title} {"  "} {props.year}
           <button
             className="nominations__remove-btn"
@@ -13,7 +13,6 @@ function Nominations(props) {
           >
             <i class="nominations__remove-icon fas fa-minus-circle"></i>
           </button>
-          {/* {props.title} {"  "} {props.year} */}
         </li>
       </ul>
     </div>
