@@ -22,7 +22,7 @@ class App extends React.Component {
 
   handleSearch = (e) => {
     e.preventDefault();
-    const urlApi = `http://www.omdbapi.com/?s=${this.state.query}&apikey=926dcd91&type=movie`;
+    const urlApi = `https://www.omdbapi.com/?s=${this.state.query}&apikey=926dcd91&type=movie`;
     // document.getElementById("search").reset();
 
     axios
@@ -61,7 +61,7 @@ class App extends React.Component {
     return (
       <div className="search">
         <div className="search__form-wrap">
-          <h1 className="search__title">Shoppies</h1>
+          <h1 className="search__title">Shopp!es</h1>
           <form
             className="search__form"
             id="search"
