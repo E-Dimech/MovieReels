@@ -2,16 +2,18 @@ import React from "react";
 import "./searchResults.scss";
 
 function SearchResults(props) {
-  console.log(props);
   return (
     <>
-      <div className="results">
+      <div className="results" key={props.imdbID}>
         <ul>
-          <li className="results__movie-list" key={props.id}>
-            <span className="results__movie-title">{props.title}</span>
-            <span>{"   "}</span>
-            <span className="results__movie-year"> {props.year} </span>
+          <li className="results__movie-list">
+            <div>
+              <span className="results__movie-title">{props.title}</span>
+              <span>{"   "}</span>
+              <span className="results__movie-year"> {props.year} </span>
+            </div>
             <button
+              disabled={!props}
               className="results__nom-btn"
               onClick={() => props.onClick(props)}
             >
