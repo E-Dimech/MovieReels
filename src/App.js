@@ -4,14 +4,12 @@ import Nominations from "./components/Nominations/Nominations";
 import SubNav from "./components/SubNav/SubNav";
 import "./App.scss";
 import axios from "axios";
-import Banner from "react-js-banner";
 
 class App extends React.Component {
   state = {
     results: [],
     query: "",
     nominations: [],
-    banner1Css: { color: "white", backgroundColor: "green" },
   };
 
   handleOnChange = (e) => {
@@ -77,15 +75,14 @@ class App extends React.Component {
             />
             <i class="search__input-icon fas fa-search"></i>
           </form>
-          {/* <div className="search__banner-border">
-            <h2 className="search__banner-text">You've nominated 5 films!</h2>
-          </div> */}
+
           {this.state.nominations.length > 4 && (
             <div className="search__banner-border">
               <h2 className="search__banner-text">You've nominated 5 films!</h2>
             </div>
           )}
         </div>
+
         <div className="search__render-wrap">
           {this.state.results.length > 0 && (
             <div className="search__results">
@@ -131,6 +128,7 @@ class App extends React.Component {
             </div>
           )}
         </div>
+
         <SubNav />
       </div>
     );
