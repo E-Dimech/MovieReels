@@ -3,6 +3,7 @@ import SearchResults from "./components/SearchResults/SearchResults";
 import Nominations from "./components/Nominations/Nominations";
 import SubNav from "./components/SubNav/SubNav";
 import "./App.scss";
+import Projector from "./Assets/Images/projector.png";
 import axios from "axios";
 
 class App extends React.Component {
@@ -76,6 +77,11 @@ class App extends React.Component {
             <i class="search__input-icon fas fa-search"></i>
           </form>
 
+          <img
+            className="search__projector-img"
+            src={Projector}
+            alt="movie projector"
+          />
           {this.state.nominations.length > 4 && (
             <div className="search__banner-border">
               <h2 className="search__banner-text">You've nominated 5 films!</h2>
