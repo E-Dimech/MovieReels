@@ -61,7 +61,7 @@ class App extends React.Component {
     return (
       <div className="search">
         <div className="search__form-wrap">
-          <h1 className="search__title">Shoppies</h1>
+          <h1 className="search__title">Shopppppies</h1>
           <form
             className="search__form"
             id="search"
