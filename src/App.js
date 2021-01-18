@@ -22,7 +22,6 @@ class App extends React.Component {
   handleSearch = (e) => {
     e.preventDefault();
     const urlApi = `https://www.omdbapi.com/?s=${this.state.query}&apikey=926dcd91&type=movie`;
-    // document.getElementById("search").reset();
 
     axios
       .get(urlApi)
@@ -35,11 +34,6 @@ class App extends React.Component {
   };
 
   nominate = (nomination) => {
-    // if (
-    //   !nominations.some(
-    //     (alreadyNominated) => alreadyNominated.id == nomination.id
-    //   )
-    // ) {
     this.setState({
       nominations: [...this.state.nominations, nomination],
     });
@@ -50,6 +44,7 @@ class App extends React.Component {
     const updatedNominations = nominations.filter((movie) => movie.id !== id);
 
     this.setState({ nominations: updatedNominations });
+    console.log(updatedNominations);
   };
 
   render() {
@@ -93,12 +88,13 @@ class App extends React.Component {
           {this.state.results.length > 0 && (
             <div className="search__results">
               <h2 className="search__results-title">
-                Results for {this.state.query}
+                Results for {this.state.query.toUpperCase()}
               </h2>
 
               {this.state.results.map((movie) => {
                 return (
                   <SearchResults
+                    // nominations={this.state.nominations}
                     key={movie.imdbID}
                     imdbID={movie.imdbID}
                     poster={movie.Poster}
@@ -127,7 +123,7 @@ class App extends React.Component {
                     title={addNominee.title}
                     year={addNominee.year}
                     onClick={this.removeNomination}
-                    nominations={this.state.nominations}
+                    // nominations={this.state.nominations}
                   />
                 );
               })}

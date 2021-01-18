@@ -11,7 +11,8 @@ function SearchResults(props) {
           <span className="results__movie-year"> {props.year} </span>
 
           <button
-            // disabled={!props}
+            // disabled={}
+            value={props.imdbID}
             className="results__nom-btn"
             onClick={() => props.onClick(props)}
           >

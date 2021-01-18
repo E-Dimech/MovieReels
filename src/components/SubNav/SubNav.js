@@ -1,5 +1,4 @@
 import React from "react";
-// import ShareButtons from "react-share";
 import "./subNav.scss";
 
 import {
