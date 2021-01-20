@@ -52,9 +52,9 @@ class App extends React.Component {
       <div className="search">
         <div className="search__form-wrap">
           <h1 className="search__title">
-            The
+            Movie
             <br />
-            Shopp!es
+            Reels
           </h1>
           <form
             className="search__form"
